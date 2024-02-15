@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import Navigation from './components/Navigation.vue';
+</script>
 
 <template>
-  <h1>Hello World</h1>
+  <Navigation />
 </template>
