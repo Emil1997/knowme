@@ -6,7 +6,7 @@
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Emil Kadilli">
             </div>
             <div class="flex flex-1 justify-center lg:justify-start items-center px-2 lg:ml-6">
-                <div class="w-full max-w-lg max-w-64">
+                <div class="w-full max-w-64">
                 <label for="search" class="sr-only">Search</label>
                 <div class="relative">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
