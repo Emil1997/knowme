@@ -9,8 +9,8 @@
                     v-for="post in dummyPosts"
                     :key="`post-${post.id}`"
                     :title="post.title" 
-                    :description="post.description" 
-                    :category="post.category" 
+                    :description="post.desc" 
+                    :category="post.category.name" 
                     :date="post.date" 
                 />
             </div>
@@ -19,12 +19,22 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import Post from './Post.vue';
 
-const dummyPosts = reactive([
-    { id: 1, title: "Post 1", description: "Lorem ipsum dolor sir amet", category: "Category 1", date: "1 March 2024" },
-    { id: 2, title: "Post 2", description: "Lorem ipsum dolor sir amet", category: "Category 2", date: "2 March 2024" },
-    { id: 3, title: "Post 3", description: "Lorem ipsum dolor sir amet", category: "Category 3", date: "3 March 2024" },
-])
+const dummyPosts = reactive([])
+
+const fetchLatestPosts = async() => {
+    try {
+        const response = await fetch(`localhost:3000/api/posts/latest`, { method: "GET" });
+        const data = await response.json();
+        dummyPosts.push(...data);
+    } catch (err) {
+        console.error("Error fetching data:", err);
+    }
+}
+
+onMounted(() => {
+    fetchLatestPosts();
+})
 </script>

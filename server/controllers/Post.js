@@ -4,9 +4,20 @@ const Post = require('../models/Post');
 // @route   GET /api/posts
 const getPosts = async (req, res) => {
     try {
-        const posts = await Post.find().populate('category');
+        const posts = await Post.find().populate('category').sort({ created: 1 });
         res.status(200).json(posts);
     } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+// @desc   Get last 3 posts
+// @route  GET /api/posts/latest
+const getLatestPosts = async(req, res) => {
+    try {
+        const posts = await Post.find().populate('category').limit(3).sort({ created: 1 });
+        res.status(200).json(posts);
+    } catch(err) {
         res.status(500).json(err);
     }
 }
@@ -58,5 +69,5 @@ const deletePost = async (req, res) => {
     }
 }
 
-module.exports = { getPosts, getPost, createPost, updatePost, deletePost }
+module.exports = { getPosts, getLatestPosts, getPost, createPost, updatePost, deletePost }
 
