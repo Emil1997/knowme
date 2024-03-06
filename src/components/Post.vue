@@ -2,8 +2,6 @@
     <article class="flex flex-col items-start justify-between">
         <div class="relative w-full">
             <img v-if="thumbnailSrc" :src="thumbnailSrc" :alt="title" class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
-            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-
             <div v-if="!thumbnailSrc" role="status" class="flex items-center justify-center h-56 max-w-sm bg-gray-100 rounded-l">
                 <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
@@ -13,7 +11,7 @@
             </div>
         </div>
         <div class="max-w-xl">
-            <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <div class="mt-8 flex items-center text-xs">
                 <time :datetime="date" class="text-gray-500">{{ date }}</time>
                 <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ category }}</a>
             </div>

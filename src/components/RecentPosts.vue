@@ -6,7 +6,7 @@
             </div>
             <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                 <Post 
-                    v-for="post in dummyPosts"
+                    v-for="post in posts"
                     :key="`post-${post.id}`"
                     :title="post.title" 
                     :description="post.desc" 
@@ -22,13 +22,13 @@
 import { onMounted, reactive } from 'vue';
 import Post from './Post.vue';
 
-const dummyPosts = reactive([])
+const posts = reactive([])
 
 const fetchLatestPosts = async() => {
     try {
-        const response = await fetch(`localhost:3000/api/posts/latest`, { method: "GET" });
+        const response = await fetch(`http://localhost:3000/api/posts/latest`, { method: "GET" });
         const data = await response.json();
-        dummyPosts.push(...data);
+        posts.push(...data);
     } catch (err) {
         console.error("Error fetching data:", err);
     }
